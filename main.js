@@ -2,6 +2,10 @@ let middleNav = document.querySelector(".middle-nav");
 let openBar = document.querySelector(".bar-img");
 let close = document.querySelector(".cancel");
 
+let decreamentBtn = document.getElementById("decreament");
+let increamentBtn = document.getElementById("increament");
+let countEl = document.getElementById("count");
+
 openBar.addEventListener("click", () => {
   middleNav.style.maxHeight = "20rem";
 });
@@ -23,6 +27,9 @@ smallImage.forEach((small) => {
 let successContainer = document.querySelector(".success-con");
 let button = document.getElementById("btn");
 
+//below here we create a function of a timeout
+// using the setTimeout method with an elapsed time of
+// 3000 milli second (i.e 3 seconds)
 function hideContainer() {
   setTimeout(() => {
     successContainer.style.display = "none";
@@ -31,4 +38,22 @@ function hideContainer() {
 button.addEventListener("click", () => {
   successContainer.style.display = "block";
   hideContainer();
+  //here we pass in the timeout function to display the
+  // container none
+});
+
+let count = 0;
+
+increamentBtn.addEventListener("click", () => {
+  count++;
+  countEl.innerHTML = count;
+});
+
+decreamentBtn.addEventListener("click", () => {
+  if (count === 0) {
+    decreamentBtn.Disabled = true;
+  } else {
+    count--;
+  }
+  countEl.innerHTML = count;
 });
